@@ -7,7 +7,7 @@ import { AccountEntity } from '../entities/account.entity';
 export class AccountRepositoryImpl implements AccountRepository {
   constructor(private prisma: PrismaService) {}
 
-  async getAccountByEmail(email: string): Promise<AccountEntity> {
+  async getAccountByEmail(email: string): Promise<AccountEntity | null> {
     const account = await this.prisma.accounts.findUnique({
       where: { email: email, deleted_at: null },
       include: {
@@ -17,7 +17,7 @@ export class AccountRepositoryImpl implements AccountRepository {
     });
 
     if (!account) {
-      throw new Error('User not found');
+      return null;
     }
 
     return new AccountEntity({
@@ -25,10 +25,11 @@ export class AccountRepositoryImpl implements AccountRepository {
       code: account.code,
       email: account.email,
       fullname: account.fullname,
+      password: account.password,
     });
   }
 
-  async getAccountById(id: string): Promise<AccountEntity> {
+  async getAccountById(id: string): Promise<AccountEntity | null> {
     const account = await this.prisma.accounts.findUnique({
       where: { id: id, deleted_at: null },
       include: {
@@ -38,7 +39,7 @@ export class AccountRepositoryImpl implements AccountRepository {
     });
 
     if (!account) {
-      throw new Error('User not found');
+      return null;
     }
 
     let head = null;

@@ -29,7 +29,7 @@ describe('AuthController', () => {
 
   it('should login - success', async () => {
     const loginDto: LoginDto = {
-      email: 'zikri_test@ipss.com',
+      email: 'felix@ipss.com',
       password: 'password1234',
     };
 
@@ -42,7 +42,7 @@ describe('AuthController', () => {
 
   it('should login failed - user not found', async () => {
     const loginDto: LoginDto = {
-      email: 'zikri_test1234@ipss.com',
+      email: 'felix_test1234@ipss.com',
       password: 'password1234',
     };
 
@@ -59,7 +59,7 @@ describe('AuthController', () => {
 
   it('should login failed - wrong password', async () => {
     const loginDto: LoginDto = {
-      email: 'zikri_test@ipss.com',
+      email: 'felix@ipss.com',
       password: '1234',
     };
 
@@ -76,7 +76,7 @@ describe('AuthController', () => {
 
   it('should refresh auth', async () => {
     const loginDto: LoginDto = {
-      email: 'zikri_test@ipss.com',
+      email: 'felix@ipss.com',
       password: 'password1234',
     };
 
@@ -95,7 +95,7 @@ describe('AuthController', () => {
 
   it('should logout', async () => {
     const loginDto: LoginDto = {
-      email: 'zikri_test@ipss.com',
+      email: 'felix@ipss.com',
       password: 'password1234',
     };
 

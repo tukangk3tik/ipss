@@ -1,0 +1,8 @@
+{
+  "NOT_FOUND": "{property} tidak ditemukan",
+  "AUTH": {
+    "WRONG_PASSWORD": "Kredensial yang anda masukkan salah",
+    "REFRESH_TOKEN_INVALID": "Refresh Token tidak valid",
+    "REFRESH_TOKEN_NOT_FOUND": "Refresh Token tidak ditemukan"
+  }
+}

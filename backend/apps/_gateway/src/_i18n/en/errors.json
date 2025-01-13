@@ -1,0 +1,8 @@
+{
+  "NOT_FOUND": "{property} not found",
+  "AUTH": {
+    "WRONG_PASSWORD": "The credentials you entered are incorrect",
+    "REFRESH_TOKEN_INVALID": "Refresh Token is invalid",
+    "REFRESH_TOKEN_NOT_FOUND": "Refresh Token not found"
+  }
+}

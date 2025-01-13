@@ -59,8 +59,8 @@ jobs:
 
         env:
           CI: true
-          DATABASE_URL: ${{ secrets.DATABASE_URL }}
-          APP_LANGUAGE: ${{ secrets.APP_LANGUANGE }}
-          JWT_ACCESS_TOKEN_SECRET: ${{ secrets.JWT_ACCESS_TOKEN_SECRET }}
-          JWT_REFRESH_TOKEN_SECRET: ${{ secrets.JWT_REFRESH_TOKEN_SECRET }}
+          DATABASE_URL: "postgresql://postgres:dbPassword1234@localhost:5432/ipss_test"
+          APP_LANGUAGE: "en"
+          JWT_ACCESS_TOKEN_SECRET: "jwt_secret_test"
+          JWT_REFRESH_TOKEN_SECRET: "jwt_refresh_secret_test"
 

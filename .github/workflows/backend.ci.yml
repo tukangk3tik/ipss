@@ -53,8 +53,8 @@ jobs:
       - name: npm install and migrate up
         run: |
           npm install
-          npm run prisma:db:migrate,
-          npm run prisma:db:seed,
+          npm run prisma:db:migrate
+          npm run prisma:db:seed
           npm run test
 
         env:

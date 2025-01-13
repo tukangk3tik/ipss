@@ -55,7 +55,7 @@ jobs:
           npm install
           npm run prisma:db:migrate
           npm run prisma:db:seed
-          npm run test
+          npm run test:cov
 
         env:
           CI: true

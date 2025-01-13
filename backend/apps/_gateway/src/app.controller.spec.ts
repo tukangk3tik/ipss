@@ -15,8 +15,8 @@ describe('AppController', () => {
   });
 
   describe('root', () => {
-    it('should return "Hello World!"', () => {
-      expect(appController.getHello()).toBe('Hello World!');
+    it('should return "IPSS API - v1"', () => {
+      expect(appController.getHello()).toBe('IPSS API - v1');
     });
   });
 });

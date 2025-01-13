@@ -3,6 +3,6 @@
     "declaration": false,
     "outDir": "../../dist/apps/_i18n"
   },
-  "include": ["_i18n/**/*"],
+  "include": ["_gateway/src/_i18n/**/*"],
   "composite": true
 }

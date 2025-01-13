@@ -4,7 +4,6 @@ import { AuthenticationTokenManager } from '../../_domain/security/authenticatio
 import { JwtTokenManager } from '../../_infrastructure/security/jwt/jwt.token.manager';
 import { PasswordHash } from '../../_domain/security/password.hash';
 import { LoginDto } from '../dtos/login.dto';
-import { I18nContext, I18nService } from 'nestjs-i18n';
 import { GlobalResponse } from '../../_domain/dtos/global.response';
 import { BcryptPasswordHash } from '../../_infrastructure/security/bcrypt/bcrypt.password.hash';
 import { AuthPayload } from '../../_infrastructure/security/entities/auth.payload';
@@ -12,6 +11,7 @@ import { RefreshAuthDto } from '../dtos/refresh.auth.dto';
 import { AuthRepository } from '../../_domain/repositories/auth.repository';
 import { AuthRepositoryImpl } from '../repositories/auth.repository.impl';
 import { LogoutDto } from '../dtos/logout.dto';
+import { GlobalError } from '../../_domain/dtos/global.error';
 
 @Injectable()
 export class AuthService {
@@ -21,7 +21,6 @@ export class AuthService {
 
   constructor(
     private readonly accountService: AccountService,
-    private readonly i18n: I18nService,
 
     authRepository: AuthRepositoryImpl,
     jwtTokenManager: JwtTokenManager,
@@ -36,9 +35,9 @@ export class AuthService {
     const user = await this.accountService.getAccountByEmail(payload.email);
 
     if (!user) {
-      const error = this.i18n.t('errors.NOT_FOUND', {
-        lang: I18nContext.current().lang,
-        args: { property: 'User' },
+      const error = new GlobalError({
+        error_key: 'errors.NOT_FOUND',
+        error_args: { property: 'User' },
       });
       throw new HttpException(error, HttpStatus.NOT_FOUND);
     }
@@ -49,8 +48,9 @@ export class AuthService {
     );
 
     if (!isPasswordMatch) {
-      const error = this.i18n.t('errors.AUTH.WRONG_PASSWORD', {
-        lang: I18nContext.current().lang,
+      const error = new GlobalError({
+        error_key: 'errors.AUTH.WRONG_PASSWORD',
+        error_args: {},
       });
       throw new HttpException(error, HttpStatus.UNAUTHORIZED);
     }
@@ -112,8 +112,9 @@ export class AuthService {
       await this.authRepository.checkAvailabilityToken(refreshToken);
 
     if (!isTokenAvailable) {
-      const error = this.i18n.t('errors.AUTH.REFRESH_TOKEN_NOT_FOUND', {
-        lang: I18nContext.current().lang,
+      const error = new GlobalError({
+        error_key: 'errors.AUTH.REFRESH_TOKEN_NOT_FOUND',
+        error_args: {},
       });
       throw new HttpException(error, HttpStatus.NOT_FOUND);
     }

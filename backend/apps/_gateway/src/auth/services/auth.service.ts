@@ -15,9 +15,9 @@ import { GlobalError } from '../../_domain/dtos/global.error';
 
 @Injectable()
 export class AuthService {
-  private authRepository: AuthRepository;
-  private jwtTokenManager: AuthenticationTokenManager;
-  private bcryptPasswordHash: PasswordHash;
+  private readonly authRepository: AuthRepository;
+  private readonly jwtTokenManager: AuthenticationTokenManager;
+  private readonly bcryptPasswordHash: PasswordHash;
 
   constructor(
     private readonly accountService: AccountService,

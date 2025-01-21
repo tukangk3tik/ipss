@@ -12,6 +12,7 @@ import { AuthRepository } from '../../_domain/repositories/auth.repository';
 import { AuthRepositoryImpl } from '../repositories/auth.repository.impl';
 import { LogoutDto } from '../dtos/logout.dto';
 import { GlobalError } from '../../_domain/dtos/global.error';
+import { jwtConstants } from '../../_infrastructure/security/constant';
 
 @Injectable()
 export class AuthService {
@@ -67,7 +68,12 @@ export class AuthService {
     return new GlobalResponse({
       statusCode: HttpStatus.CREATED,
       message: 'Success',
-      data: { access_token: accessToken, refresh_token: refreshToken },
+      data: {
+        access_token: accessToken,
+        refresh_token: refreshToken,
+        expires_in: jwtConstants.expiresInNumber,
+        user_id: user.id,
+      },
     });
   }
 

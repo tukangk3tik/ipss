@@ -26,6 +26,7 @@ async function bootstrap() {
     }),
   );
   app.useGlobalFilters(new ErrorHandler(app.get(I18nService)));
+  app.enableCors();
 
   await app.listen(3000);
 }

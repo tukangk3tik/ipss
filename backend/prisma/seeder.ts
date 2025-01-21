@@ -90,8 +90,8 @@ async function main() {
     {
       id: 'account-677cf4f342e445fcb064b60d',
       code: 'SRMGR01',
-      email: 'zikri@ipss.com',
-      fullname: 'Zikri Santoso',
+      email: 'felix@ipss.com',
+      fullname: 'Felix Serang',
       head_id: 'account-677cdee700eeb4061131ff0d',
       position_id: 'accountposition-677cdcbec1b688efc759bd81',
       site_id: 'site-677cdc6955251740ef2de44b',

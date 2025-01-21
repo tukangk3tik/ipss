@@ -5,7 +5,14 @@
   "compilerOptions": {
     "deleteOutDir": true,
     "webpack": true,
-    "tsConfigPath": "apps/_gateway/tsconfig.app.json"
+    "tsConfigPath": "apps/_gateway/tsconfig.app.json",
+    "assets": [
+      {
+        "include": "_i18n/**/*",
+        "watchAssets": true,
+        "outDir": "dist/apps/_gateway"
+      }
+    ]
   },
   "monorepo": true,
   "root": "apps/_gateway",

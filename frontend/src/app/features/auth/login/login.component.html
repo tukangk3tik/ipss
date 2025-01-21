@@ -1,0 +1,33 @@
+<div class="login-container">
+  <p-card class="login-card">
+    <h2 #title i18n="@@login.title">Welcome to IPSS!</h2>
+    <h4 i18n="@@login.subtitle">Please login to continue</h4>
+    <form (ngSubmit)="onLogin()">
+      <div class="p-field">
+        <label for="email">Email</label>
+        <div>
+          <input style="width: 100%;" id="email" type="text" pInputText [(ngModel)]="email" name="email" required placeholder="your@email.com" />
+        </div>
+      </div>
+      <div class="p-field">
+        <label for="password">Password</label>
+        <div>
+          <input style="width: 100%;" id="password" type="password" pInputText [(ngModel)]="password" name="password" required placeholder="********" />
+        </div>
+      </div>
+      <div class="p-field" style="text-align: center;">
+        <p-progress-spinner *ngIf="isLoading" ariaLabel="loading"
+          strokeWidth="8" fill="transparent" animationDuration=".5s"
+          [style]="{ width: '40px', height: '40px' }"/>
+
+        <button *ngIf="!isLoading"
+          pButton style="width: 100%;"
+          class="p-button p-button-primary font-bold"
+          type="submit" label="Login"
+          [disabled]="!email || !password"></button>
+      </div>
+      <p-message severity="error" *ngIf="errorMessage">{{ errorMessage }}</p-message>
+    </form>
+  </p-card>
+</div>
+
